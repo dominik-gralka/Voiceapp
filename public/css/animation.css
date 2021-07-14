@@ -1,0 +1,122 @@
+@keyframes move_wave {
+  0% {
+    transform: translateX(0) translateZ(0) scaleY(1);
+  }
+
+  50% {
+    transform: translateX(-25%) translateZ(0) scaleY(0.55);
+  }
+
+  100% {
+    transform: translateX(-50%) translateZ(0) scaleY(1);
+  }
+}
+
+@keyframes wave_back {
+  0% {
+    transform: translateX(-50%) translateZ(0) scaleY(1);
+    transition-timing-function: ease;
+  }
+  100% {
+    transform: translateX(0) translateZ(0) scaleY(1);
+    transition-timing-function: ease;
+  }
+}
+
+.waveWrapper {
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  margin: auto;
+}
+
+.waveWrapperInner {
+  position: absolute;
+  width: 101%;
+  overflow: hidden;
+  height: 101%;
+  bottom: -1px;
+  background-image: linear-gradient(to top, #000 20%, #27273c 80%);
+}
+
+.bgTop {
+  z-index: 15;
+  opacity: 0.5;
+}
+
+.bgMiddle {
+  z-index: 10;
+  opacity: 0.75;
+}
+
+.bgBottom {
+  z-index: 5;
+}
+
+.wave {
+  position: absolute;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background-repeat: repeat no-repeat;
+  background-position: 0 bottom;
+  transform-origin: center bottom;
+}
+
+.waveTop {
+  background-size: 50% 10%;
+  background-image: url("https://cdn.glitch.com/2a073e21-1e77-487e-8bdf-6dd4c71efc27%2Fwave-top.png?v=1616656119357");
+}
+
+.waveAnimation .waveTop {
+  animation: move-wave 3s;
+  -webkit-animation: move-wave 3s;
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s;
+}
+
+.waveMiddle {
+  background-size: 50% 12%;
+  background-image: url("https://cdn.glitch.com/2a073e21-1e77-487e-8bdf-6dd4c71efc27%2Fwave-mid.png?v=1616656119357");
+}
+
+.waveAnimation .waveMiddle {
+  animation: move_wave 10s linear infinite;
+}
+
+.waveBottom {
+  background-size: 50% 10%;
+  background-image: url("https://cdn.glitch.com/2a073e21-1e77-487e-8bdf-6dd4c71efc27%2Fwave-bot.png?v=1616656119357");
+}
+
+.waveAnimation .waveBottom {
+  animation: move_wave 15s linear infinite;
+}
+
+@keyframes click_button {
+  0% {
+    opacity: 1;
+    -webkit-transform: scale(1, 1) translateX(0%);
+    transform: scale(1, 1) translateX(0%);
+  }
+  50% {
+    opacity: 1;
+    -webkit-transform: scale(1.1, 1.1) translateX(0);
+    transform: scale(1.1, 1.1) translateX(0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1, 1) translateX(0);
+    transform: scale(1, 1) translateX(0);
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  .wave {
+    display: none;
+    opacity: 0%;
+  }
+}

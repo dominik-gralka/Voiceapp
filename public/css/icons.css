@@ -1,0 +1,9 @@
+.mic-fill {
+	width: 30px;
+	height: 30px;
+	background-size: cover;
+	background-repeat: no-repeat;
+	display: inline-block;
+  color: #fff;,  
+	background-image: url(https://cdn.glitch.com/66ffbc40-b3e2-4f6d-b276-cee0db18c27c%2Fmic-fill.svg?v=1624045396602);
+}

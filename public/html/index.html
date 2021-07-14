@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>VoiceApp</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <meta
+      name="description"
+      content="The Untraceable Voice-Platform by Constellate"
+    />
+    <meta name="application-name" content="Voiceapp" />
+    <meta name="theme-color" content="#000000" />
+
+    <link
+      rel="icon"
+      href="https://cdn.glitch.com/2a073e21-1e77-487e-8bdf-6dd4c71efc27%2Fblue_constellate.ico?v=1616602106977"
+      type="image/x-icon"
+    />
+    <link
+      rel="icon"
+      href="https://cdn.glitch.com/2a073e21-1e77-487e-8bdf-6dd4c71efc27%2Fblue_constellate.png?v=1616602133226"
+      type="image/png"
+    />
+    <link
+      rel="icon"
+      href="https://cdn.glitch.com/2a073e21-1e77-487e-8bdf-6dd4c71efc27%2Fblue_constellate.ico?v=1616602106977"
+      sizes="any"
+      type="image/svg+xml"
+    />
+
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" href="css/welcome.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+      integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="css/animation.css" />
+  </head>
+
+  <body onload="welcome()">
+    <img
+      class="fixed"
+      src="https://cdn.glitch.com/66ffbc40-b3e2-4f6d-b276-cee0db18c27c%2Fvoiceapp%20logo%202%20black.png?v=1624024406289"
+      style="width:100px;padding-bottom:0.5%;display:inline-block;"
+    />
+
+    <div id="welcomebox1" class="welcomebox1">
+      <center>
+        <div>
+          <img
+            class="welcome-image"
+            src="https://cdn.glitch.com/66ffbc40-b3e2-4f6d-b276-cee0db18c27c%2FSaly-22.png?v=1624001335073"
+            style="height:250px;padding-bottom:5%;padding-top:3%;"
+          />
+        </div>
+        <span id="welcomebox1text" class="welcomebox1text">Welcome!</span><br />
+        <span id="welcomebox1sub" class="welcomebox1sub"
+          >Start by creating or joining a room.</span
+        >
+        <div id="joinroombox" class="joinroombox">
+          <div>
+            <input autocomplete="off"
+              type="text"
+              id="txtRoomName"
+              class="txtRoomName"
+              placeholder="Choose a name for your room"
+            />
+          </div>
+          <div id="joinroombutton" onclick="initRoom()" class="joinroombutton">
+            <i class="fas fa-arrow-right joinroombutton2"></i>
+          </div>
+        </div>
+      </center>
+    </div>
+    <div id="welcomebg" class="welcomebg"></div>
+    
+    <!--<div id="userWrap" class="userWrap">
+      Test
+      <div class="userDot">
+        T
+      </div>
+    
+    </div>-->
+
+    <div id="topbar" class="topbar">
+      
+      <div id="btnWrap"></div>
+      <div class="topbare2">
+        <span id="usercount"></span><a> </a><i id="usercounticon" class="fas fa-user"></i>
+      </div>
+      <br />
+    </div>
+    
+    <div class="topbare1">
+        <i id="signal" class="fa fa-circle-notch fa-spin"></i>
+        <span id="connectioninfo-pre">Waiting For Endpoint</span
+        ><span
+          id="connectioninfo"
+          style="font-weight: 600;color:#41EB7E;"
+        ></span>
+      </div>
+
+    <!--<i class="fas fa-cog cog" onclick="openSettings();"></i>-->
+
+    <!--Chat-Fenster-->
+    <!--  
+  <div id="chat" class="chat" style="background-color:#131313;color:#ccc;">
+      <div class="incomingMessages" id="incomingMessages" >
+
+      </div>
+      <input id="messageBox" class="messageBox" type="text"><button id="sendButton" class="sendButton">
+      Send
+      </button>
+      </div>-->
+
+    <div
+      id="intro"
+      class="message"
+      style="background-color:#131313;color:#ccc;"
+    >
+      <center>
+        <img
+          style="width:30%;display:block;padding:10%;"
+          src="https://cdn.glitch.com/2a073e21-1e77-487e-8bdf-6dd4c71efc27%2Fmessage.png"
+        />
+        Invite other users using this link:<br />
+        <br />
+        <span id="roomurl" class="roomurl" onclick="copylink();"
+          >Generating link...</span
+        >
+        <button class="secondarylink" onclick="newInstance();">
+          Create new room
+        </button>
+      </center>
+      <br />
+    </div>
+
+    <div
+      id="intro-mobile"
+      class="message-mobile"
+      style="background-color:#131313;color:#ccc;bottom:-1%;"
+    >
+      <center>
+        <img
+          style="width:86px;display:block;padding:5%;"
+          src="https://cdn.glitch.com/2a073e21-1e77-487e-8bdf-6dd4c71efc27%2Fmessage.png"
+        />
+        <p style="padding:20px;">
+          Invite other users using this link:
+        </p>
+        <br />
+        <span
+          id="roomurl-mobile"
+          class="roomurl-mobile"
+          onclick="copylink()"
+        ></span>
+        <button id="cop" class="copy" onclick="copylink()">
+          Copy link
+        </button>
+        <button id="newinstance" class="newinstance" onclick="newInstance();">
+          Create new room
+        </button>
+      </center>
+      <br />
+    </div>
+
+    <div id="waveWrapper" class="waveWrapper waveAnimation">
+      <div class="waveWrapperInner bgTop">
+        <div id="waveTop" class="wave waveTop"></div>
+      </div>
+      <div class="waveWrapperInner bgMiddle">
+        <div id="waveMiddle" class="wave waveMiddle"></div>
+      </div>
+      <div class="waveWrapperInner bgBottom">
+        <div id="waveBottom" class="wave waveBottom"></div>
+      </div>
+    </div>
+    
+    
+    <div id="tooManyParticipants" class="message2">
+      A larger number of users can affect the performance of the instance
+    </div>
+    <div
+      id="userJoinMessage"
+      class="message2"
+      style="background-color:#131313;color:#ccc;"
+    >
+      User joined the room
+    </div>
+    <div
+      id="userLeaveMessage"
+      class="message2"
+      style="background-color:#131313;color:#ccc;"
+    >
+      User left the room
+    </div>
+    <div
+      id="copyMessage"
+      class="message2"
+      style="background-color:#41EB7E;color:#131313;vertical-align:bottom;"
+    >
+      Copied<i class="fas fa-check" style="padding-left:2%;"></i>
+    </div>
+    <div id="videoFail" class="message2">
+      The screenshare function is currently disabled
+    </div>
+
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script src="js/statechange.js"></script>
+    <script src="js/welcome.js"></script>
+    <script src="js/peerjs.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/createRoom.js"></script>
+    <script src="js/chat.js"></script>
+    <script src="js/nickname.js"></script>
+  </body>
+</html>
